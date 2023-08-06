@@ -1,47 +1,39 @@
-# Svelte + TS + Vite
+# Prims Playground
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+Play around with Prim's algorithm - learn how it works, and see what the graph looks like in real time!
 
-## Recommended IDE Setup
+> I created this mostly for fun, so don't expect any bug fixes are feature updates. I just wanted to make a cool interface that does something small, so the actual algorithm isn't optimised.
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
 
-## Need an official Svelte framework?
+## Features
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+### Run the algorithm
 
-## Technical considerations
 
-**Why use this over SvelteKit?**
+Walk through each step of the algorithm manually, or skip to the end to see the final result:
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+> demo.mp4
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+You can use the arrows on your keyboard or next to the progress bar. Alternatively, click anywhere on the progress bar to skip to that step.
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+> Hold `Shift+ArrowKey` to skip forward three steps, and `Ctrl/Cmd+ArrowKey` to switch between the start and finish.
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+### View the stats
 
-**Why include `.vscode/extensions.json`?**
+Underneath the progress bar is a (live) list of statistics, including:
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+- Step of the algorithm itself
+- Completion state
+- List of the active pointers (in the order they were added)
+- List of the smallest values
+- Total length of the Min Spanning Tree found
 
-**Why enable `allowJs` in the TS template?**
 
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
+### Watch the graph
 
-**Why is HMR not preserving my local component state?**
+Whenever a new smallest value is found, it is added to the graph in real time. As you increment the steps, a spanning tree will start to form within the graph (connecting all vertices).
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+Once finished, the MST will be highlighted. You can drag around points and pan across the graph to make it more readable if your like.
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+> Click the button at the top to download a png of the graph.
