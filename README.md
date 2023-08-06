@@ -12,7 +12,7 @@ Play around with Prim's algorithm - learn how it works, and see what the graph l
 
 Walk through each step of the algorithm manually, or skip to the end to see the final result:
 
-> demo.mp4
+https://github.com/j0rdanR/prims-playground/assets/96402459/c4c488cd-efab-44dd-99c4-baec1cce6eb2
 
 You can use the arrows on your keyboard or next to the progress bar. Alternatively, click anywhere on the progress bar to skip to that step.
 
