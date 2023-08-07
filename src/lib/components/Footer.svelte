@@ -4,7 +4,7 @@
 
   <div class="flex max-sm:flex-col gap-1.5 sm:gap-6">
     <p>Playground created by Jordan Rodrigues</p>
-    <p>View the <a href="https://github.com" target="_blank" rel="noreferrer" class="underline">Source code</a></p>
+    <p>View the <a href="https://github.com/j0rdanR/prims-playground" target="_blank" rel="noreferrer" class="underline">Source code</a></p>
     <p class="inline-block w-fit px-1 font-mono bg-gray-500 rounded-lg sm:rounded-md">v0.0.1</p>
   </div>
 </footer>
