@@ -32,8 +32,9 @@
 
 <header class="w-full min-h-16 h-16 px-4 flex items-center justify-between bg-white border-b">
   <p class="text-lg">
-    <span class="font-bold text-blue-500">Prims</span>
+    <span class="font-bold text-emerald-500">Prims</span>
     <span class="text-gray-700">Algorithm</span>
+    <span class="text-xs text-gray-500">[BETA]</span>
   </p>
 
   <button use:melt={$trigger} class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors rounded-xl">

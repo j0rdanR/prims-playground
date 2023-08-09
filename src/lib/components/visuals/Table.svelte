@@ -14,7 +14,7 @@
       <tr class="no-style">
         <th></th>
         {#each headers as _, num}
-          <th class="text-blue-500 align-middle">
+          <th class="text-emerald-500 align-middle">
             {#if pointers?.find(v => v === num) !== undefined}
               <ArrowDownCircle size={20} class="m-auto" />
             {/if}

@@ -63,14 +63,14 @@
       <div class="flex-1 flex items-center gap-4">
         <!-- <input type="text" placeholder="6" bind:value={sizeInput} class="w-[6ch] text-sm font-mono px-2 py-1 border rounded-md">
         <p class="text-xs text-gray-500">The number of nodes in the table/graph</p> -->
-        <input type="range" min="2" max="12" step="1" class="w-full" bind:value={sizeInput}>
+        <input type="range" min="2" max="12" step="1" class="w-full accent-emerald-500" bind:value={sizeInput}>
         <span class="w-[3ch] text-right font-mono">{sizeInput}</span>
       </div>
     </div>
     <div class="px-3 py-2 flex items-center gap-4">
       <p class="text-sm font-medium min-w-[14ch]">Density</p>
       <div class="flex-1 flex items-center gap-4">
-        <input type="range" min="0" max="100" step="5" class="w-full" bind:value={densityInput}>
+        <input type="range" min="0" max="100" step="5" class="w-full accent-emerald-500" bind:value={densityInput}>
         <span class="w-[3ch] text-right font-mono">{densityInput}</span>
       </div>
     </div>
@@ -104,7 +104,7 @@
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <!-- svelte-ignore a11y-mouse-events-have-key-events -->
       <div class="group relative flex-1 h-6 bg-gray-200 border border-gray-300 rounded-full overflow-hidden select-none" on:click={progressToClick} bind:this={progressBar}>
-        <div style="width: calc({$step/(steps?.length-1)*100}% + 64px)" class="-translate-x-16 w-full h-full flex items-center justify-end font-mono text-sm text-white bg-blue-500 rounded-full transition-[width] duration-200">
+        <div style="width: calc({$step/(steps?.length-1)*100}% + 64px)" class="-translate-x-16 w-full h-full flex items-center justify-end font-mono text-sm text-white bg-emerald-500 rounded-full transition-[width] duration-200">
           <span class="pr-2">{$step}</span>
         </div>
       </div>

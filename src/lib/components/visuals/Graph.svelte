@@ -115,8 +115,8 @@
         {
           selector: '.selectedNode',
           css: {
-            'background-color': '#3b82f6',
-            'border-color': '#1d4ed8',
+            'background-color': '#10b981',
+            'border-color': '#047857',
             'border-width': '2px',
             'color': 'white',
             'transition-property': 'background-color',
@@ -128,7 +128,7 @@
           selector: '.selectedEdge',
           css: {
             'width': '3px',
-            'line-color': '#3b82f6'
+            'line-color': '#10b981'
           }
         }
       ],
