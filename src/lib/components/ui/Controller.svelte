@@ -63,7 +63,7 @@
       <div class="flex-1 flex items-center gap-4">
         <!-- <input type="text" placeholder="6" bind:value={sizeInput} class="w-[6ch] text-sm font-mono px-2 py-1 border rounded-md">
         <p class="text-xs text-gray-500">The number of nodes in the table/graph</p> -->
-        <input type="range" min="2" max="26" step="1" class="w-full" bind:value={sizeInput}>
+        <input type="range" min="2" max="12" step="1" class="w-full" bind:value={sizeInput}>
         <span class="w-[3ch] text-right font-mono">{sizeInput}</span>
       </div>
     </div>
