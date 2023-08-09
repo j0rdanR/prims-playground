@@ -1,5 +1,5 @@
 <script>
-  import { Download } from 'lucide-svelte';
+  import { Download, ExternalLink } from 'lucide-svelte';
 
   export let cy;
   let src;
@@ -21,8 +21,14 @@
     <span class="text-gray-700">Algorithm</span>
   </p>
 
-  <button on:click={saveGraph} class="px-2 py-1.5 flex items-center gap-2 text-gray-600 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
-    Graph
-    <Download size={18} />
-  </button>
+  <div class="flex items-center gap-3">
+    <a href="https://next.prims-playground.jrdx.me/" target="_blank" rel="noreferrer" class="px-2 py-1.5 flex items-center gap-2 text-gray-600 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+      Beta
+      <ExternalLink size={18} />
+    </a>
+    <button on:click={saveGraph} class="px-2 py-1.5 flex items-center gap-2 text-gray-600 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+      Graph
+      <Download size={18} />
+    </button>
+  </div>
 </header>
