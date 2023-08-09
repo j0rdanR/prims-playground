@@ -1,11 +1,11 @@
 <script lang="ts">
   import cytoscape, { type Cytoscape } from 'cytoscape';
   import gridGuide from 'cytoscape-grid-guide';
-  import type { AreaChart } from 'lucide-svelte';
   import { onMount } from 'svelte';
 
   export let headers;
   export let matrix;
+  export let values;
 
   const nodesFromHeaders = (headers) => {
     return headers.map(v => ({
@@ -45,21 +45,32 @@
   const nodes = nodesFromHeaders(headers);
   const edges = edgesFromMatrix(matrix);
 
+  let cy;
   let container;
-  export let cy: Cytoscape;
+  let highlighted = [];
 
   onMount(() => {
-
     gridGuide( cytoscape );
 
     cy = cytoscape({
       container,
       layout: {
-        name: 'concentric',
         fit: true,
-        padding: 50,
-        minNodeSpacing: 100,
-        avoidOverlap: true,
+        padding: 20,
+
+        // minNodeSpacing: 100,
+        // avoidOverlap: true,
+
+        // name: 'cose',
+        // componentSpacing: 140,
+        // nodeRepulsion: function( node ){ return 802048; },
+
+        name: 'circle',
+
+        // name: 'breadthfirst',
+        // roots: ['A'],
+        // circle: true,
+        // depthSort: function(a, b){ return a.data('weight') - b.data('weight') },
       },
       style: [
         {
@@ -107,7 +118,10 @@
             'background-color': '#3b82f6',
             'border-color': '#1d4ed8',
             'border-width': '2px',
-            'color': 'white'
+            'color': 'white',
+            'transition-property': 'background-color',
+            'transition-duration': 0.5,
+            'transition-timing-function': 'ease-in-out',
           }
         },
         {
@@ -132,8 +146,38 @@
       gridColor: '#aaa5',
       panGrid: true,
     });
+
+    
   });
+
+
+  const highlightEdge = (cy, x, y) => {
+    if (cy) {
+      highlighted.push({ x, y })
+      const pos = [headers[x], headers[y]].sort();
+      cy.$(`#${pos[0]}_${pos[1]}`).addClass('selectedEdge');
+      cy.$(`#${pos[0]}`).addClass('selectedNode');
+      cy.$(`#${pos[1]}`).addClass('selectedNode');
+    }
+  }
+  const highlightSelections = selections => {
+    if (cy) {
+      highlighted.forEach(h => {
+        const pos = [headers[h.x], headers[h.y]].sort();
+        cy.$(`#${pos[0]}_${pos[1]}`).removeClass('selectedEdge')
+      })
+      highlighted.forEach(h => {
+        const pos = [headers[h.x], headers[h.y]];
+        cy.$(`#${pos[0]}`).removeClass('selectedNode')
+        cy.$(`#${pos[1]}`).removeClass('selectedNode')
+      })
+    }
+    selections.forEach(s => highlightEdge(cy, s.x, s.y))
+  }
+  $: highlightSelections(values);
 </script>
 
 
-<div bind:this={container} class="w-full h-full overflow-hidden"></div>
+<div bind:this={container} class="relative w-full h-full overflow-hidden">
+  <div class="absolute z-50 bottom-2 left-2 px-2 py-1 text-xs text-gray-600 bg-white/90 backdrop-blur-sm border rounded-lg">Hint: Click and drag nodes to reposition</div>
+</div>
