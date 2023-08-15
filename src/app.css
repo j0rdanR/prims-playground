@@ -6,4 +6,16 @@
   html, body {
     @apply w-full h-full text-gray-800 bg-gray-100;
   }
+
+  .header-tab-trigger {@apply
+    px-3 py-2
+    text-sm text-gray-600 hover:text-gray-800
+    hover:bg-gray-100
+    border-b border-b-transparent hover:border-b-gray-600
+    transition-colors 
+  ;}
+  .header-tab-trigger[data-state="active"] {@apply
+    text-blue-900
+    bg-blue-50 border-b-blue-500
+  ;}
 }
