@@ -1,4 +1,3 @@
-import { step } from './stores/step';
 import { Hourglass, Tally1, Tally2, Tally3, Tally4, Tally5, CheckCircle } from 'lucide-svelte';
 
 
@@ -151,6 +150,114 @@ export const runPrimsAlgorithm = (baseMatrix, headers) => {
 }
 
 
+// TODO: optimise this function and remove overhead
+export const runPrimsAlgorithmNew = baseMatrix => {
+  let matrix = baseMatrix;
+  const headers = inferHeadings(matrix.length);
+  const steps = [];
+  const pointers = [];
+  const values = [];
+  let valuesIndex = 0;
+
+  // 0: Initial state (uncomputed)
+  steps.push({
+    meta: {
+      icon: Hourglass,
+      title: 'Idle'
+    },
+    data: JSON.stringify({
+      matrix, pointers, values
+    })
+  });
+
+  // 1. Pick a starting point
+  pointers.push(0)
+  steps.push({
+    meta: {
+      icon: Tally1,
+      title: 'Pick a starting point -> `A`'
+    },
+    data: JSON.stringify({
+      matrix, pointers, values
+    })
+  });
+  
+  // 2. Cross it off
+  matrix = killRow(matrix, 0);
+  steps.push({
+    meta: {
+      icon: Tally2,
+      title: 'Cross initial row off (prevents cycle)'
+    },
+    data: JSON.stringify({
+      matrix, pointers, values
+    })
+  });
+
+
+  // algorithm finds (n - 1) smallest values
+  for (const _ of headers.slice(1)) {
+
+    // 3. Find the smallest value
+    const smallest = smallestOfPointers(matrix, pointers);
+    matrix[smallest.x][smallest.y] = { type: 'selected', value: matrix[smallest.x][smallest.y] }
+    values.push({ id: valuesIndex, ...smallest });
+    valuesIndex++;
+    steps.push({
+      meta: {
+        icon: Tally3,
+        title: `Smallest of all pointers -> \`${smallest.value}\` in column \`${headers[smallest.x]}\``
+      },
+      data: JSON.stringify({
+        matrix, pointers, values
+      })
+    });
+    
+    // skip other steps on last iteration; algo has already finished
+    if (headers.indexOf(_) !== headers.length - 1) {
+      // 5. Cross this row off
+      killRow(matrix, smallest.y, smallest.x);
+      steps.push({
+        meta: {
+          icon: Tally4,
+          title: `Cross off row which value resides in -> \`${headers[smallest.y]}\``
+        },
+        data: JSON.stringify({
+          matrix, pointers, values
+        })
+      });
+
+      // 4. Add a pointer
+      pointers.push(smallest.y);
+      steps.push({
+        meta: {
+          icon: Tally5,
+          title: `Add pointer to \`${headers[smallest.y]}\``
+        },
+        data: JSON.stringify({
+          matrix, pointers, values
+        })
+      });
+    } else {
+      killRow(matrix, smallest.y, smallest.x);
+    }
+  }
+
+  // complete
+  steps.push({
+    meta: {
+      icon: CheckCircle,
+      title: `Algorithm finished`
+    },
+    data: JSON.stringify({
+      matrix, pointers, values
+    })
+  });
+
+  return steps;
+}
+
+
 
 
 
@@ -192,22 +299,25 @@ export const randomMatrix = () => {
 
 export interface MatrixGeneratorOptions {
   /** User defined fixed size of the matrix */
-  size?: number;
+  size: number;
   /** If size is not provided, the minimum size of the matrix */
-  sizeMin?: number;
+  sizeMin: number;
   /** If size is not provided, the maximum size of the matrix */
-  sizeMax?: number;
+  sizeMax: number;
   /** The density of the matrix - lower number results in a scarse matrix */
-  density?: number;
+  density: number;
+
+  range: number[];
 }
 
-export const randomMatrixNew = (options?: MatrixGeneratorOptions) => {
-  const size = options?.size || rand(options?.sizeMin || 4, options?.sizeMax || 10);
+export const randomMatrixNew = (options?: Partial<MatrixGeneratorOptions>) => {
+  const size = options?.size || rand(options?.sizeMin || 4, options?.sizeMax || 12);
   const density = options?.density || 65;
+  const range = options?.range || [20, 100];
   const mtr = [];
 
   for (let x = 0; x < size; x++) {
-    let col = Array.from({ length: size }, () => rand(20, 120));
+    let col = Array.from({ length: size }, () => rand(range[0], range[1]));
 
     col.forEach((_, y) => {
       if (x === y) {
@@ -235,6 +345,22 @@ export const inferHeadings = (matrixSize: number) => {
   return chars.slice(0, matrixSize).split('');
 }
 
+import { sizeParam, densityParam, rangeParam } from './stores/params';
+import { step, steps } from './stores/stepper';
+
+export const newScenario = () => {
+  let size, density, range;
+  sizeParam.subscribe(v => (size = v[0]));
+  densityParam.subscribe(v => (density = v[0]));
+  rangeParam.subscribe(v => (range = v));
+
+  const matrix = randomMatrixNew({
+    size, density, range
+  });
+
+  step.set(0);
+  steps.set(runPrimsAlgorithmNew(matrix));
+}
 
 
 export const keyboardNavigation = (steps, step, e: KeyboardEvent) => {

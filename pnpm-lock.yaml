@@ -11,6 +11,9 @@ devDependencies:
   '@melt-ui/svelte':
     specifier: ^0.34.2
     version: 0.34.2(svelte@4.0.5)
+  '@svelte-put/shortcut':
+    specifier: ^3.0.0
+    version: 3.0.0
   '@sveltejs/vite-plugin-svelte':
     specifier: ^2.4.2
     version: 2.4.2(svelte@4.0.5)(vite@4.4.5)
@@ -359,6 +362,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@svelte-put/shortcut@3.0.0:
+    resolution: {integrity: sha512-nZg3pwpTi9wUsvQPlqOzEsxZcF2jmY5j+VBq/20IUjjd2OpM92XqZAga0PCCjE6OuEobOt58UMnC2QZgOvk0tQ==}
     dev: true
 
   /@sveltejs/vite-plugin-svelte-inspector@1.0.3(@sveltejs/vite-plugin-svelte@2.4.2)(svelte@4.0.5)(vite@4.4.5):

@@ -9,13 +9,94 @@
 
   .header-tab-trigger {@apply
     px-3 py-2
-    text-sm text-gray-600 hover:text-gray-800
-    hover:bg-gray-100
-    border-b border-b-transparent hover:border-b-gray-600
-    transition-colors 
+    text-sm text-gray-600
+    border-b border-b-transparent
+    ripple
+    transition-colors
+    outline-none
+
+    focus-visible:ring-1 ring-inset focus-visible:ring-blue-500
   ;}
   .header-tab-trigger[data-state="active"] {@apply
-    text-blue-900
+    text-blue-950
     bg-blue-50 border-b-blue-500
+  ;}
+
+  .dialog-content-container {@apply
+    fixed left-1/2 top-1/2 z-50
+    w-full max-w-xl mx-2 p-6
+    -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white shadow-lg  
+  ;}
+
+  .debug {
+    @apply border-2 border-red-500;
+  }
+
+  .ripple {
+    --ripple-easing: cubic-bezier(.1,.96,.88,.98);
+
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+  .ripple:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10,10);
+    opacity: 0;
+    transition: transform 300ms var(--ripple-easing), opacity 400ms var(--ripple-easing) !important;
+  }
+  .ripple-slow:after {
+    transition: transform 350ms var(--ripple-easing), opacity 500ms var(--ripple-easing) !important;
+  }
+  .ripple:active:after {
+    transform: scale(0,0);
+    opacity: 0.15;
+    transition: 0s;
+  }
+  .ripple.ripple-invert:after {
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  }
+  .ripple.ripple-invert:active:after {
+    opacity: 0.1;
+  }
+}
+
+@layer components {
+  .icon-btn {@apply
+    w-10 h-10
+    flex items-center justify-center
+    rounded-xl
+    text-gray-500
+    enabled:hover:text-gray-700
+    enabled:hover:bg-gray-100
+    enabled:focus-visible:text-gray-700
+    enabled:focus-visible:bg-gray-100
+    disabled:text-gray-300
+    transition-colors
+    enabled:ripple
+    outline-none
+  ;}
+  .btn {@apply
+    px-3 py-2
+    flex items-center justify-center
+    rounded-xl
+    text-gray-500
+    hover:text-gray-700
+    hover:bg-gray-100
+    focus-visible:text-gray-700
+    focus-visible:bg-gray-100
+    transition-colors
+    ripple
+    outline-none
   ;}
 }

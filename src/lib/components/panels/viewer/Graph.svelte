@@ -1,21 +1,20 @@
 <script lang="ts">
-  import cytoscape, { type Cytoscape } from 'cytoscape';
-  import gridGuide from 'cytoscape-grid-guide';
   import { onMount } from 'svelte';
+  import cytoscape from 'cytoscape';
+  import gridGuide from 'cytoscape-grid-guide';
 
   export let headers;
   export let matrix;
-  export let values;
 
   const nodesFromHeaders = (headers) => {
-    return headers.map(v => ({
+    return headers?.map(v => ({
       data: { id: v }
     }));
   }
   const edgesFromMatrix = (matrix) => {
     const edges = [];
-    for (let y=0; y<headers.length; y++) {
-      for (let x=0; x<headers.length; x++) {
+    for (let y=0; y<headers?.length; y++) {
+      for (let x=0; x<headers?.length; x++) {
         const cell = matrix[x][y];
         if (!(cell.value === -1 || cell === -1)) {
           const pos = [headers[x], headers[y]].sort()
@@ -47,7 +46,6 @@
 
   let cy;
   let container;
-  let highlighted = [];
 
   onMount(() => {
     gridGuide( cytoscape );
@@ -147,34 +145,7 @@
       panGrid: true,
     });
 
-    
   });
-
-
-  const highlightEdge = (cy, x, y) => {
-    if (cy) {
-      highlighted.push({ x, y })
-      const pos = [headers[x], headers[y]].sort();
-      cy.$(`#${pos[0]}_${pos[1]}`).addClass('selectedEdge');
-      cy.$(`#${pos[0]}`).addClass('selectedNode');
-      cy.$(`#${pos[1]}`).addClass('selectedNode');
-    }
-  }
-  const highlightSelections = selections => {
-    if (cy) {
-      highlighted.forEach(h => {
-        const pos = [headers[h.x], headers[h.y]].sort();
-        cy.$(`#${pos[0]}_${pos[1]}`).removeClass('selectedEdge')
-      })
-      highlighted.forEach(h => {
-        const pos = [headers[h.x], headers[h.y]];
-        cy.$(`#${pos[0]}`).removeClass('selectedNode')
-        cy.$(`#${pos[1]}`).removeClass('selectedNode')
-      })
-    }
-    selections.forEach(s => highlightEdge(cy, s.x, s.y))
-  }
-  $: highlightSelections(values);
 </script>
 
 
