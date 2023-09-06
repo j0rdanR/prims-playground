@@ -37,3 +37,42 @@ Whenever a new smallest value is found, it is added to the graph in real time. A
 Once finished, the MST will be highlighted. You can drag around points and pan across the graph to make it more readable if your like.
 
 > Click the button at the top to download a png of the graph.
+
+
+
+## Changelog
+
+Available within the source code [over here](https://github.com/j0rdanR/prims-playground/blob/main/CHANGELOG.md)
+
+
+
+## Installing locally
+
+The app is a vanilla Svelte website with Vite as the build tool. You can easily reproduce the dashboard on your machine if the hosted version is offline/no longer working.
+
+1. Make sure you have `npm` and `node` installed on your machine:
+
+```zsh
+$  npm -v
+9.6.7
+
+$ node -v
+v20.3.1
+```
+
+2. Install the dependencies by running this command in the source code's folder:
+
+```zsh
+npm install
+```
+
+3. You can then run the development server, or build and preview locally:
+
+```zsh
+npm run dev
+# or
+npm run build      # generate static dist folder
+npm run preview    # serve /dist on webserver
+```
+
+4. Go to the address listed in your terminal (after running the previous command) in a web browser. The default address should be http://localhost:5123
