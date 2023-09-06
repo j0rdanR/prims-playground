@@ -11,7 +11,7 @@
     <p>Playground by Jordan Rodrigues</p>
     <p>View the <a href="https://github.com/j0rdanR/prims-playground" target="_blank" rel="noreferrer" class="underline">Source code</a></p>
     <p class="inline-block w-fit px-1 font-mono bg-gray-500 rounded-lg sm:rounded-md">
-      <a href="/changelog" class="underline">v{version}</a>
+      <a href="https://github.com/j0rdanR/prims-algoritm/#changelog" class="underline">v{version}</a>
     </p>
   </div>
 </footer>
