@@ -21,7 +21,7 @@
   
     <p class="inline-block w-fit px-1 font-mono bg-gray-500 rounded-lg sm:rounded-md">
       <a
-        href="https://github.com/j0rdanR/prims-algoritm/#changelog"
+        href="https://github.com/j0rdanR/prims-playground/#changelog"
         target="_blank" rel="noreferrer"
         class="underline"
       >
