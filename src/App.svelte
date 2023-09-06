@@ -4,6 +4,7 @@
   import Inspector from './lib/components/Inspector.svelte';
   import Viewer from './lib/components/Viewer.svelte';
   import Shortcuts from './lib/components/Shortcuts.svelte';
+  import MobileWarning from './lib/components/ui/MobileWarning.svelte';
   import { onMount } from 'svelte';
   import { newScenario } from './lib/utils';
 
@@ -28,3 +29,4 @@
 </div>
 
 <Shortcuts />
+<MobileWarning />
