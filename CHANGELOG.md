@@ -1,5 +1,13 @@
 # @j0rdanR/prims-playground
 
+## 0.2.0
+
+### Major changes
+
+- feat: interface is now responsive, supporting mobile viewports
+- docs: created guide for running project locally
+- fix: relinked various dead hrefs throughout interface
+
 ## 0.1.1
 
 ### Patch changes
