@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <Footer version="1.2.0" />  
+  <Footer version={APP_VERSION} />  
 </div>
 
 <Shortcuts />

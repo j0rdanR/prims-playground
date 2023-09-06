@@ -1,8 +1,13 @@
 # @j0rdanR/prims-playground
 
-## 1.0.0
+## 0.1.1
 
-The commit history is all over the place here, so version 1 actually refers to the initial published app, and not the beta that this changelog was committed with. **The beta is still a WIP 🚧.**
+### Patch changes
+
+- feat: use dynamic version number from package.json in ui
+- refactor: reset version number again to reflect state of project
+
+## 0.1.0
 
 ### Patch changes
 
