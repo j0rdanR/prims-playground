@@ -8,7 +8,7 @@
 
 </script>
 
-<div class="h-full flex flex-col justify-between">
+<div class="h-full p-4 flex flex-col justify-between gap-4">
   <div class="flex flex-col gap-4">
     <Section title="Size">
       <Slider min={3} max={12} default={[6]} store={sizeParam} />

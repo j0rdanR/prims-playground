@@ -8,7 +8,7 @@
   } = createTabs();
 </script>
 
-<div use:melt={$root} class="w-full h-full flex flex-col">
+<div use:melt={$root} class="w-full h-full flex-1 flex flex-col">
   <div use:melt={$list} class="flex justify-start border-b bg-white">
     <button use:melt={$trigger('controls')} class="header-tab-trigger">Controls</button>
     <button use:melt={$trigger('config')} class="header-tab-trigger">Config</button>
@@ -25,8 +25,7 @@
 
 <style lang="postcss">
   .tab-content {@apply
-    h-full w-full
-    p-4
+    w-full h-full flex-1
     outline-none
   ;}
 </style>

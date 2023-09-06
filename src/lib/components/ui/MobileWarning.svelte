@@ -20,8 +20,8 @@
 </script>
 
 
-<div use:melt={$portalled} class="md:hidden fixed inset-0 px-2 flex items-center justify-center">
-  {#if $open}
+{#if $open}
+  <div use:melt={$portalled} class="fixed inset-0 px-2 flex items-center justify-center">
     <div use:melt={$overlay} class="fixed inset-0 z-50 bg-black/80" />
     <div
       class="z-50 w-full max-w-md p-6 rounded-md bg-white shadow-lg"
@@ -44,6 +44,6 @@
         </button>
       </div>
     </div>
-  {/if}
-</div>
+  </div>
+{/if}
  

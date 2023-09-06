@@ -7,8 +7,8 @@
   let circumference = 30 * 2 * Math.PI;
 </script>
 
-<div class="-mx-4 -mb-4">
-  <div class="px-2 pb-2 flex items-center justify-between">
+<div class="bg-white border-t">
+  <div class="px-2 pt-2.5 pb-2 flex items-center justify-between">
     <div class="flex-1 flex gap-0.5">
       <IconButton
         icon={SkipBack}

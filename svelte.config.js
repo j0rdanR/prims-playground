@@ -6,5 +6,10 @@ export default {
   preprocess: sequence([
     vitePreprocess(),
     preprocessMeltUI(),
-  ])
+  ]),
+  kit: {
+    alias: {
+      '$lib': 'src/lib'
+    }
+  }
 }

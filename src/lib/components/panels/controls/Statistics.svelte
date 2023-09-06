@@ -21,7 +21,7 @@
   $: $mstLength = stepData?.values?.reduce((a, v) => (a+v.value), 0) || 0;
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 p-4">
   <Section title="Stage">
     <div class="flex items-start gap-2">
       <svelte:component this={stepMeta?.icon || AlertCircle} size={16} class="text-gray-600 mt-1 min-w-[16px]" />

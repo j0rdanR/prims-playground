@@ -41,5 +41,6 @@
   .tab-content {@apply
     h-full w-full
     outline-none
+    overflow-hidden
   ;}
 </style>

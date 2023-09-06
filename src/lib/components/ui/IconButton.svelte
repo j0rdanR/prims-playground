@@ -19,7 +19,7 @@
   });
 </script>
 
-<button use:melt={$trigger} class="icon-btn" on:click {disabled}>
+<button use:melt={$trigger} class="icon-btn {$$props.class}" on:click {disabled}>
   <svelte:component this={icon} size={20} />
 </button>
 

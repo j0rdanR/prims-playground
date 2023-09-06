@@ -4,8 +4,9 @@
   import { steps } from '../../../stores/stepper';
 </script>
 
-<div class="h-full flex flex-col justify-between">
+<div class="w-full h-full flex-1 flex flex-col gap-4 justify-between">
   <Statistics />
+  
   {#if $steps.length > 0}
     <Stepper />
   {:else}
