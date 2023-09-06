@@ -23,6 +23,7 @@
     </div>
   </div>
 
+  <!-- svelte-ignore missing-declaration -->
   <Footer version={APP_VERSION} />  
 </div>
 
