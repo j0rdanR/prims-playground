@@ -1,10 +1,34 @@
+<script>
+  import { GITHUB_REPO_URL } from '../utils';
 
-<footer class="w-full px-4 py-5 sm:px-3 sm:py-1.5 flex max-sm:flex-col sm:items-center justify-between gap-4 sm:gap-12 bg-gray-600 border-t sm:text-xs text-white">
-  <p class="max-sm:text-lg sm:truncate"><i>Visualisation of Prim's Algorithm to find a Minimum Spanning Tree</i></p>
+  export let version = "X.X.X";
+</script>
 
-  <div class="flex max-sm:flex-col gap-1.5 sm:gap-6">
-    <p>Playground created by Jordan Rodrigues</p>
-    <p>View the <a href="https://github.com/j0rdanR/prims-playground" target="_blank" rel="noreferrer" class="underline">Source code</a></p>
-    <p class="inline-block w-fit px-1 font-mono bg-gray-500 rounded-lg sm:rounded-md">v0.0.1</p>
+
+<footer class="h-7 px-2 md:px-3 flex items-center justify-between bg-gray-600 text-white text-xs">
+  <div class="max-md:hidden">
+    <p class="italic truncate">Visualisation of Prim's Algorithm to find a Minimum Spanning Tree</p>
+  </div>
+  <div class="max-md:flex-1 flex items-center justify-between gap-6">
+    <p>
+      Playground by
+      <a
+        href="https://github.com/j0rdanR"
+        target="_blank" rel="noreferrer"
+        class="underline"
+      >
+        Jordan Rodrigues
+      </a>
+    </p>
+  
+    <p class="inline-block w-fit px-1 font-mono bg-gray-500 rounded-lg sm:rounded-md">
+      <a
+        href="{GITHUB_REPO_URL}/#changelog"
+        target="_blank" rel="noreferrer"
+        class="underline"
+      >
+        v{version}
+      </a>
+    </p>
   </div>
 </footer>

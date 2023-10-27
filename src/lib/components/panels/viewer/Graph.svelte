@@ -1,21 +1,20 @@
 <script lang="ts">
-  import cytoscape, { type Cytoscape } from 'cytoscape';
-  import gridGuide from 'cytoscape-grid-guide';
-  import type { AreaChart } from 'lucide-svelte';
   import { onMount } from 'svelte';
+  import cytoscape from 'cytoscape';
+  import gridGuide from 'cytoscape-grid-guide';
 
   export let headers;
   export let matrix;
 
   const nodesFromHeaders = (headers) => {
-    return headers.map(v => ({
+    return headers?.map(v => ({
       data: { id: v }
     }));
   }
   const edgesFromMatrix = (matrix) => {
     const edges = [];
-    for (let y=0; y<headers.length; y++) {
-      for (let x=0; x<headers.length; x++) {
+    for (let y=0; y<headers?.length; y++) {
+      for (let x=0; x<headers?.length; x++) {
         const cell = matrix[x][y];
         if (!(cell.value === -1 || cell === -1)) {
           const pos = [headers[x], headers[y]].sort()
@@ -45,21 +44,31 @@
   const nodes = nodesFromHeaders(headers);
   const edges = edgesFromMatrix(matrix);
 
+  let cy;
   let container;
-  export let cy: Cytoscape;
 
   onMount(() => {
-
     gridGuide( cytoscape );
 
     cy = cytoscape({
       container,
       layout: {
-        name: 'concentric',
         fit: true,
-        padding: 50,
-        minNodeSpacing: 100,
-        avoidOverlap: true,
+        padding: 20,
+
+        // minNodeSpacing: 100,
+        // avoidOverlap: true,
+
+        // name: 'cose',
+        // componentSpacing: 140,
+        // nodeRepulsion: function( node ){ return 802048; },
+
+        name: 'circle',
+
+        // name: 'breadthfirst',
+        // roots: ['A'],
+        // circle: true,
+        // depthSort: function(a, b){ return a.data('weight') - b.data('weight') },
       },
       style: [
         {
@@ -104,17 +113,20 @@
         {
           selector: '.selectedNode',
           css: {
-            'background-color': '#3b82f6',
-            'border-color': '#1d4ed8',
+            'background-color': '#10b981',
+            'border-color': '#047857',
             'border-width': '2px',
-            'color': 'white'
+            'color': 'white',
+            'transition-property': 'background-color',
+            'transition-duration': 0.5,
+            'transition-timing-function': 'ease-in-out',
           }
         },
         {
           selector: '.selectedEdge',
           css: {
             'width': '3px',
-            'line-color': '#3b82f6'
+            'line-color': '#10b981'
           }
         }
       ],
@@ -132,8 +144,11 @@
       gridColor: '#aaa5',
       panGrid: true,
     });
+
   });
 </script>
 
 
-<div bind:this={container} class="w-full h-full overflow-hidden"></div>
+<div bind:this={container} class="relative w-full h-full overflow-hidden">
+  <div class="absolute z-50 bottom-2 left-2 px-2 py-1 text-xs text-gray-600 bg-white/90 backdrop-blur-sm border rounded-lg">Hint: Click and drag nodes to reposition</div>
+</div>
