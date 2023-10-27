@@ -5,10 +5,20 @@ Play around with Prim's algorithm - learn how it works, and see what the graph l
 > I created this mostly for fun, so don't expect any bug fixes are feature updates. I just wanted to make a cool interface that does something small, so the actual algorithm isn't optimised.
 
 
+## Roadmap
+
+- [ ] Fix graph rendering off-screen by default
+- [ ] Reintroduce path highlighting for the min spanning tree
+- [ ] Add download button to export graph as png
+- [x] Documentation for keyboard shortcuts
+- [ ] Documentation for help dialog
+- [x] Optimise ui elements for mobile viewing
+- [ ] Refactor internal algorithm code
+
+
 ## Features
 
 ### Run the algorithm
-
 
 Walk through each step of the algorithm manually, or skip to the end to see the final result:
 
