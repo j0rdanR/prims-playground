@@ -5,6 +5,7 @@
   import { X } from 'lucide-svelte';
 
   export let trigger: { icon: any, tooltip: string };
+  export let dialogClass = '';
 </script>
 
 <Dialog.Root>
@@ -24,7 +25,7 @@
       transitionConfig={{duration: 150}}
     />
     <Dialog.Content
-      class="dialog-content-container"
+      class="dialog-content-container {dialogClass}"
       transition={fly}
       transitionConfig={{duration: 200, y: -10}}
     >
@@ -33,7 +34,7 @@
 
       <slot />
 
-      <Dialog.Close class="absolute right-4 top-4 inline-flex h-6 w-6 appearance-none items-center justify-center rounded-full p-1 text-gray-800 hover:bg-gray-100 focus:shadow-gray-400">
+      <Dialog.Close class="absolute right-4 top-4 inline-flex h-10 w-10 appearance-none items-center justify-center rounded-full text-gray-800 hover:bg-gray-100 ripple">
         <X class="w-4 h-4" />
       </Dialog.Close>
     </Dialog.Content>

@@ -17,10 +17,12 @@
     Control the playground using your keyboard
   </svelte:fragment>
 
+  <hr class="md:hidden mb-6">
+
   <div class="flex flex-col desktop-padding max-h-[50vh] overflow-auto">
-    <ShortcutItem name="Generate new example" keybind="&#8984; + G" />
-    <ShortcutItem name="Skip to start" keybind="&#8984; + &#x2190;" />
-    <ShortcutItem name="Skip to end" keybind="&#8984; + &#x2192;" />
+    <ShortcutItem name="Generate new example" keybind="Ctrl/&#8984; + G" />
+    <ShortcutItem name="Skip to start" keybind="Ctrl/&#8984; + &#x2190;" />
+    <ShortcutItem name="Skip to end" keybind="Ctrl/&#8984; + &#x2192;" />
     <ShortcutItem name="Jump back 3 steps" keybind="Shift + Alt + &#x2190;" />
     <ShortcutItem name="Jump forward 3 steps" keybind="Shift + Alt + &#x2192;" />
     <ShortcutItem name="Previous step" keybind="Shift + &#x2190;" />
