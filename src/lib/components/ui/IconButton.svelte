@@ -1,10 +1,18 @@
 <script lang="ts">
   import { createTooltip, melt } from '@melt-ui/svelte';
+  import type { SvelteComponent } from 'svelte';
   import { fade } from 'svelte/transition';
 
   export let icon;
   export let tooltip: string = '';
   export let disabled = false;
+  export let builderAction: any = null;
+
+  function action(node, func) {
+    if (func) {
+      func(node);
+    }
+  }
  
   const {
     elements: { trigger, content, arrow },
@@ -19,7 +27,7 @@
   });
 </script>
 
-<button use:melt={$trigger} class="icon-btn {$$props.class}" on:click {disabled}>
+<button use:action={builderAction} use:melt={$trigger} class="icon-btn {$$props.class}" on:click {disabled}>
   <svelte:component this={icon} size={20} />
 </button>
 

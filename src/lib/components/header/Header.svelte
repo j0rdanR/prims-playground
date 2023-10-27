@@ -1,7 +1,7 @@
 <script>
-  import { Code, Github, HelpCircle, Keyboard } from 'lucide-svelte';
-  import IconButton from '../ui/IconButton.svelte';
-  import HelpDialog from './HelpDialog.svelte';
+  import Download from './Download.svelte';
+  import Help from './Help.svelte';
+  import KeyboardShortcuts from './KeyboardShortcuts.svelte';
 </script>
 
 <header class="h-12 min-h-[48px] pl-3 pr-1 flex items-center justify-between bg-white border-b">
@@ -11,14 +11,8 @@
   </p>
 
   <div class="flex gap-0.5">
-    <IconButton
-      icon={Code}
-      tooltip="Source code"
-    />
-    <IconButton
-      icon={Keyboard}
-      tooltip="Shortcuts"
-    />
-    <HelpDialog />
+    <KeyboardShortcuts />
+    <Download />
+    <Help />
   </div>
 </header>
