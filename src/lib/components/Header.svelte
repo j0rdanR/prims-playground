@@ -19,11 +19,12 @@
   <p class="text-lg">
     <span class="font-bold text-blue-500">Prims</span>
     <span class="text-gray-700">Algorithm</span>
+    <span class="text-xs italic pl-1">LEGACY</span>
   </p>
 
   <div class="flex items-center gap-3">
-    <a href="https://next.prims-playground.jrdx.me/" target="_blank" rel="noreferrer" class="px-2 py-1.5 flex items-center gap-2 text-gray-600 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
-      Beta
+    <a href="https://prims-playground.jrdx.me/" target="_blank" rel="noreferrer" class="px-2 py-1.5 flex items-center gap-2 text-gray-600 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+      Latest version
       <ExternalLink size={18} />
     </a>
     <button on:click={saveGraph} class="px-2 py-1.5 flex items-center gap-2 text-gray-600 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
