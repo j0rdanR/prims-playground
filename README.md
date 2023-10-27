@@ -1,3 +1,7 @@
+> [!WARNING]
+> The docs for this version have not been updated, and still reflect the legacy interface. It's still relevant, but for up to date instructions and keyboard shortcuts, use the help section within the app itself.
+
+
 # Prims Playground
 
 Play around with Prim's algorithm - learn how it works, and see what the graph looks like in real time!
