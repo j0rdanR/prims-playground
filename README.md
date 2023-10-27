@@ -11,7 +11,7 @@ Play around with Prim's algorithm - learn how it works, and see what the graph l
 - [ ] Reintroduce path highlighting for the min spanning tree
 - [ ] Add download button to export graph as png
 - [x] Documentation for keyboard shortcuts
-- [ ] Documentation for help dialog
+- [x] Documentation for help dialog
 - [x] Optimise ui elements for mobile viewing
 - [ ] Refactor internal algorithm code
 

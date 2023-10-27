@@ -1,5 +1,16 @@
 # @j0rdanR/prims-playground
 
+## 0.3.0
+
+This is the last major update to this project I plan to make. There were some features which I wanted to implement, but since the app has reached a mature stage where it's not missing any key functionality, I might leave it at that.
+
+### Major changes
+
+- feat: added proper usage documentation within the app
+- feat: added keyboard shortcuts guide
+- docs: added feature roadmap to readme
+
+
 ## 0.2.0
 
 ### Major changes
