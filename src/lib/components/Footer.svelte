@@ -1,4 +1,6 @@
 <script>
+  import { GITHUB_REPO_URL } from '../utils';
+
   export let version = "X.X.X";
 </script>
 
@@ -21,7 +23,7 @@
   
     <p class="inline-block w-fit px-1 font-mono bg-gray-500 rounded-lg sm:rounded-md">
       <a
-        href="https://github.com/j0rdanR/prims-playground/#changelog"
+        href="{GITHUB_REPO_URL}/#changelog"
         target="_blank" rel="noreferrer"
         class="underline"
       >

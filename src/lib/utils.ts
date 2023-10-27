@@ -1,5 +1,7 @@
 import { Hourglass, Tally1, Tally2, Tally3, Tally4, Tally5, CheckCircle } from 'lucide-svelte';
 
+/** URL to GitHub repo, without trailing slash. */
+export const GITHUB_REPO_URL = 'https://github.com/j0rdanR/prims-playground';
 
 export const killRow = (matrix, mY, selectionIndex?) => {
   matrix.forEach((_, mX) => {
